@@ -1,0 +1,43 @@
+<div class="container my-5">
+  <section class="container py-3">
+    <form (ngSubmit)="createOrUpdate()">
+      <div class="row">
+        <div class="col-4">
+          <label for="code">Código:</label>
+          <input class="form-control" id="code" [(ngModel)]="invoice.code" name="codigo" required />
+        </div>
+        <div class="col-4">
+          <label for="description">Descripción:</label>
+          <input class="form-control" id="description" [(ngModel)]="invoice.description" name="descripcion" required />
+
+        </div>
+        <div class="col-8 my-2">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </section>
+  <section class="card rounded-0 mx-1 bg-transparent border-0 container">
+    <table class="table table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of invoices">
+        <td>{{ item.id }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.description }}</td>
+        <td>
+          <button class="btn btn-warning mx-1" (click)="edit(item.id)"><i class="bi bi-pencil-square"></i></button>
+          <button class="btn btn-danger mx-1" (click)="deleteItem(item.id)"><i class="bi bi-trash"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
